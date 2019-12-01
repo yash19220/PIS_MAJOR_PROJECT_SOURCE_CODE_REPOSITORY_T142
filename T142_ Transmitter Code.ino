@@ -4,13 +4,6 @@
 #include "Wire.h"       //For communication
 #include "I2Cdev.h"     //For communicate with MPU6050
 #include "MPU6050.h"    //The main library of the MPU6050
-#include <FastLED.h>
-
-#define LED_PIN     10
-#define NUM_LEDS    6
-
-CRGB leds[NUM_LEDS];
-
 
 //Define the object to access and cotrol the Gyro and Accelerometer (We don't use the Gyro data)
 MPU6050 mpu;
@@ -58,15 +51,6 @@ if(data1 > 340){
   t=!t;
   delay(1000);
 }
-if(t==true) {
-  leds[2] = CRGB(255, 0, 0);
-} else {
-leds[2] = CRGB(0, 0, 0);
-}
-FastLED.show();
 
 radio.write(&data1, sizeof(data1));
-  
-  
-
 }
